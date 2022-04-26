@@ -36,6 +36,12 @@
           <span>Laporan</span></a>
       </div>
 
+      <div class="nav-item <?php echo $menu == 'seller' ? 'active' : '' ?>">
+        <a href="<?php echo base_url('seller') ?>" class="nav-link">
+          <i class="fa fa-user"></i> <span>Penjual</span>
+        </a>
+      </div>
+
       <div class="nav-item <?= $menu == 'balance_seller' ? 'active' : "" ?>">
         <a href="<?= base_url('balance_seller') ?>" class="nav-link">
           <i class="fas fa-money-bill-wave"></i>
