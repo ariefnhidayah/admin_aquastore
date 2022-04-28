@@ -91,7 +91,7 @@ class Seller extends CI_Controller {
         }
         $this->form_validation->set_rules('phone', 'No Handphone', 'required|trim');
         $this->form_validation->set_rules('status', 'Status', 'required|trim');
-        $this->form_validation->set_rules('courier', 'Kurir', 'required');
+        // $this->form_validation->set_rules('courier', 'Kurir', '');
         $this->form_validation->set_rules('bank_name', 'Bank', 'required|trim');
         $this->form_validation->set_rules('account_number', 'Nomor Akun', 'required|trim');
         $this->form_validation->set_rules('account_holder', 'Nama Akun', 'required|trim');
