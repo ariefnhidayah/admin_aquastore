@@ -4,7 +4,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Api {
 
-    public $url_media = 'http://localhost:8081/';
+    // public $url_media = 'http://localhost:8081/';
+    public $url_media = 'https://drive.aquastoreid.com/';
 
     public function post($url, $data = array()) {
         $curl = curl_init();
