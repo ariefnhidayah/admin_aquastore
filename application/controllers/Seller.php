@@ -63,7 +63,7 @@ class Seller extends CI_Controller {
             'content' => 'seller/form',
             'menu' => 'seller',
             'error' => '',
-            'javascripts' => [base_url('assets/admin/js/seller.js')],
+            'javascripts' => [base_url('assets/admin/js/seller.js?t=' . time())],
             'data' => '',
         ];
 
@@ -144,6 +144,26 @@ class Seller extends CI_Controller {
         $this->main->delete($this->table, ['id' => $id]);
         $return = array('message' => 'Penjual berhasil dihapus', 'status' => 'success');
         echo json_encode($return);
+    }
+
+    public function get_city() {
+        $this->input->is_ajax_request() or exit('No direct post submit allowed!');
+
+        $post = $this->input->post(null, true);
+        $cities = $this->main->gets('cities', ['province' => $post['province']]);
+        echo json_encode([
+            'data' => $cities->result()
+        ]);die;
+    }
+
+    public function get_district() {
+        $this->input->is_ajax_request() or exit('No direct post submit allowed!');
+
+        $post = $this->input->post(null, true);
+        $districts = $this->main->gets('districts', ['city' => $post['city']]);
+        echo json_encode([
+            'data' => $districts->result()
+        ]);die;
     }
 
 }

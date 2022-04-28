@@ -66,4 +66,49 @@ $(function() {
             }
           })
     })
+
+    $('#province').on('change', function() {
+        const value = $(this).val()
+        $.ajax({
+            url: site_url + 'seller/get_city',
+            method: 'post',
+            type: 'json',
+            data: {
+                province: value
+            },
+            success: function(data) {
+                data = JSON.parse(data)
+                data = data.data
+                let html = '<option value="">Pilih Kota / Kabupaten</option>';
+                for (const item of data) {
+                    html += '<option value="'+item.id+'">'+item.type+' '+item.name+'</option>'
+                }
+
+                $('#city').html(html)
+                $('#district').html('<option value="">Pilih Kecamatan</option>')
+            }
+        })
+    })
+
+    $('#city').on('change', function() {
+        const value = $(this).val()
+        $.ajax({
+            url: site_url + 'seller/get_district',
+            method: 'post',
+            type: 'json',
+            data: {
+                city: value
+            },
+            success: function(data) {
+                data = JSON.parse(data)
+                data = data.data
+                let html = '<option value="">Pilih Kecamatan</option>';
+                for (const item of data) {
+                    html += '<option value="'+item.id+'">'+item.name+'</option>'
+                }
+
+                $('#district').html(html)
+            }
+        })
+    })
 })
