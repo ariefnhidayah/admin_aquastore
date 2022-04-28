@@ -127,6 +127,11 @@
 								<input type="text" class="form-control <?=form_error('postcode') ? 'is-invalid' : '' ?>" name="postcode" value="<?= set_value('postcode') != '' ? set_value('postcode') : ($data != '' ? $data->postcode : '') ?>" />
 								<?= form_error('postcode') ?>
 							</div>
+							<div class="col-md-4 form-group">
+								<label for="seo_url">Seo URL</label>
+								<input type="text" class="form-control <?=form_error('seo_url') ? 'is-invalid' : '' ?>" name="seo_url" value="<?= set_value('seo_url') != '' ? set_value('seo_url') : ($data != '' ? $data->seo_url : '') ?>" />
+								<?= form_error('seo_url') ?>
+							</div>
 						</div>
 						<hr />
 						<div class="row">
