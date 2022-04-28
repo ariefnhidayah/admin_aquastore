@@ -1,4 +1,7 @@
 <!-- Begin Page Content -->
+<?php if ($data) {
+	$data->courier = json_decode($data->courier);
+} ?>
 <div class="container-fluid">
 	<?php $user = $this->session->userdata('user'); ?>
 
@@ -66,7 +69,7 @@
 								<label for="password">Password</label>
 								<div>
 									<input type="password" class="form-control <?= form_error('password') != '' ? 'is-invalid' : '' ?>" id="password" name="password"
-										value="<?= set_value('phone') != '' ? set_value('phone') : ($data != '' ? $data->phone : '') ?>">
+										value="<?= set_value('password') ?>">
 									<?= form_error('password') ?>
 								</div>
 							</div>
@@ -118,6 +121,13 @@
 								<?= form_error('district_id') ?>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-md-4 form-group">
+								<label for="postcode">Kode POS</label>
+								<input type="text" class="form-control <?=form_error('postcode') ? 'is-invalid' : '' ?>" name="postcode" value="<?= set_value('postcode') != '' ? set_value('postcode') : ($data != '' ? $data->postcode : '') ?>" />
+								<?= form_error('postcode') ?>
+							</div>
+						</div>
 						<hr />
 						<div class="row">
 							<div class="col-md-12 form-group">
@@ -127,7 +137,7 @@
 									<div class="form-check form-check-inline">
 										<input type="checkbox" class="form-check-input" id="checkbox-<?=$shipping?>"
 											value="<?=$shipping?>" name="courier[]"
-											<?php echo set_value('courier[]') != '' ? in_array($shipping, set_value('courier[]')) ? 'checked' : '' : '' ?> />
+											<?php echo set_value('courier[]') != '' ? in_array($shipping, set_value('courier[]')) ? 'checked' : '' : ($data != '' ? in_array($shipping, $data->courier) ? 'checked' : '' : '') ?> />
 										<label for="checkbox-<?=$shipping?>"
 											class="form-check-label"><?php echo strtoupper($shipping) ?></label>
 									</div>
@@ -139,21 +149,21 @@
 								<label>Bank</label>
 								<input type="text" name="bank_name" id="bank_name"
 									class="form-control <?= form_error('bank_name') != '' ? 'is-invalid' : '' ?>"
-									value="<?= set_value('bank_name') ?>">
+									value="<?= set_value('bank_name') != '' ? set_value('bank_name') : ($data != '' ? $data->bank_name : '') ?>">
 								<?= form_error('bank_name') ?>
 							</div>
 							<div class="form-group col-sm-4">
 								<label>Nomor Akun</label>
 								<input type="text" name="account_number" id="account_number"
 									class="form-control <?= form_error('account_number') != '' ? 'is-invalid' : '' ?>"
-									value="<?= set_value('account_number') ?>">
+									value="<?= set_value('account_number') != '' ? set_value('account_number') : ($data != '' ? $data->account_number : '') ?>">
 								<?= form_error('account_number') ?>
 							</div>
 							<div class="form-group col-sm-4">
 								<label>Nama Akun</label>
 								<input type="text" name="account_holder" id="account_holder"
 									class="form-control <?= form_error('account_holder') != '' ? 'is-invalid' : '' ?>"
-									value="<?= set_value('account_holder') ?>">
+									value="<?= set_value('account_holder') != '' ? set_value('account_holder') : ($data != '' ? $data->account_holder : '') ?>">
 								<?= form_error('account_holder') ?>
 							</div>
 						</div>
