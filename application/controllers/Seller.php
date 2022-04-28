@@ -107,7 +107,6 @@ class Seller extends CI_Controller {
         $this->form_validation->set_message('required', '%s harus diisi!');
 
         if ($this->form_validation->run() === FALSE) {
-            var_dump(validation_errors());die;
             $this->load->view('layout/full', $data);
         } else {
             $post = $this->input->post(null, true);
