@@ -132,6 +132,13 @@
 								<input type="text" class="form-control <?=form_error('seo_url') ? 'is-invalid' : '' ?>" name="seo_url" value="<?= set_value('seo_url') != '' ? set_value('seo_url') : ($data != '' ? $data->seo_url : '') ?>" />
 								<?= form_error('seo_url') ?>
 							</div>
+							<div class="col-md-4 form-group">
+								<label for="status">Status</label>
+								<select name="status" id="status" class="form-control">
+									<option value="1" <?php echo set_value('status') != '' ? set_value('status') == 1 ? 'selected' : '' : ($data != '' ? $data->status == 1 ? 'selected' : '' : '') ?>>Aktif</option>
+									<option value="0" <?php echo set_value('status') != '' ? set_value('status') == 0 ? 'selected' : '' : ($data != '' ? $data->status == 0 ? 'selected' : '' : '') ?>>Tidak Aktif</option>
+								</select>
+							</div>
 						</div>
 						<hr />
 						<div class="row">
